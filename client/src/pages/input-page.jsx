@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import axios from "axios";
-import Med from '../assets/med-bg.jpg'
+import Med from '../assets/med.avif'
 
 
 const Input = () => {
@@ -14,6 +14,7 @@ const Input = () => {
   backgroundPosition: 'center'
   };
 
+  
   const [name, setName] = useState('')
   const [bmi, setBmi] = useState('')
   const [obesity, setObesity] = useState('')
@@ -59,7 +60,7 @@ const Input = () => {
               Name
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border border-slate-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="name"
               name="name"
               type="text"
@@ -76,7 +77,7 @@ const Input = () => {
               Body Mass Index
             </label>
             <select
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border border-slate-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="bmi"
               name="bmi"
               type="text"
@@ -99,7 +100,7 @@ const Input = () => {
               Childhood Obesity
             </label>
             <select
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border border-slate-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="obesity"
               name="obesity"
               type="text"
@@ -108,9 +109,9 @@ const Input = () => {
               onChange={(e) => setObesity(e.target.value)}
             >
               <option value=""></option>
-              <option value="Option 1">Not Obese (0-40)</option>
-              <option value="Option 2">Slightly Obese (28 - 80)</option>
-              <option value="Option 3">Very Obese ()</option>
+              <option value="Option 1">Not Obese</option>
+              <option value="Option 2">Slightly Obese</option>
+              <option value="Option 3">Very Obese</option>
             </select>
           </div>
 
@@ -122,7 +123,7 @@ const Input = () => {
               Maternal Genetics
             </label>
             <select
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border border-slate-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="genetics"
               name="genetics"
               type="text"
