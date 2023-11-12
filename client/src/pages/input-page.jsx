@@ -1,94 +1,150 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import axios from "axios";
+// import Med from '../assets/med-bg.jpg'
+
 
 const Input = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    bmi: '',
-    obesity: '',
-    genetics: '',
-  });
+  const [name, setName] = useState('')
+  const [bmi, setBmi] = useState('')
+  const [obesity, setObesity] = useState('')
+  const [genetics, setGenetics] = useState('')
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+  const [result, setResult] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/pubertyOnset", {
+          name,
+          bmi,
+          obesity,
+          genetics,
+        }
+      );
+      setResult(response.data.result);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+
+    // this clears form input values after submission
+    setName('')
+    setBmi('')
+    setObesity('')
+    setGenetics('')
   };
 
   return (
-    <div className="bg-blue-300 flex justify-center items-center h-screen">
-      <form className="bg-white p-8 rounded shadow-md">
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
-            Name
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="name"
-            name="name"
-            type="text"
-            placeholder="Name"
-            value={formData.name}
-            onChange={handleInputChange}
-          />
+    <main className="bg-blue-300">
+      <h1 className="text-3xl font-bold text-center pt-10 text-slate-900">
+        PUBERTY ONSET DIAGNOSTIC SYSTEM
+      </h1>
+      <div className="flex justify-center items-center h-screen">
+        <form className="bg-white p-8 rounded shadow-md" onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="name"
+            >
+              Name
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="name"
+              name="name"
+              type="text"
+              placeholder="Enter Patient's Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="bmi"
+            >
+              Body Mass Index
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="bmi"
+              name="bmi"
+              type="text"
+              placeholder="BMI"
+              value={bmi}
+              onChange={(e) => setBmi(e.target.value)}
+            />
+          </div>
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="obesity"
+            >
+              Childhood Obesity
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="obesity"
+              name="obesity"
+              type="text"
+              placeholder="Obesity"
+              value={obesity}
+              onChange={(e) => setObesity(e.target.value)}
+            />
+          </div>
+
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="genetics"
+            >
+              Maternal Genetics
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="genetics"
+              name="genetics"
+              type="text"
+              placeholder="genetics"
+              value={genetics}
+              onChange={(e) => setGenetics(e.target.value)}
+            />
+          </div>
+
+          {/* <div className="mb-4">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="genetics"
+            >
+              Maternal Genetics
+            </label>
+            <select
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="genetics"
+              name="genetics"
+              value={formData.genetics}
+              onChange={handleInputChange}
+            >
+              <option value="">Select Genetics</option>
+              <option value="Option 1">Option 1</option>
+              <option value="Option 2">Option 2</option>
+              <option value="Option 3">Option 3</option>
+            </select>
+          </div> */}
+          <div className="flex items-center justify-center">
+            <input
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="submit"
+            />
+          </div>
+        </form>
+        <div>
+          <p>RESULTS SHOWN HERE:</p>
+          {result && <p>Result: {result}</p>}
         </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="bmi">
-            Body Mass Index
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="bmi"
-            name="bmi"
-            type="text"
-            placeholder="BMI"
-            value={formData.bmi}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="obesity">
-            Childhood Obesity
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="obesity"
-            name="obesity"
-            type="text"
-            placeholder="Obesity"
-            value={formData.obesity}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="genetics">
-            Maternal Genetics
-          </label>
-          <select
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="genetics"
-            name="genetics"
-            value={formData.genetics}
-            onChange={handleInputChange}
-          >
-            <option value="">Select Genetics</option>
-            <option value="Option 1">Option 1</option>
-            <option value="Option 2">Option 2</option>
-            <option value="Option 3">Option 3</option>
-          </select>
-        </div>
-        <div className="flex items-center justify-center">
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="button"
-          >
-            Submit
-          </button>
-        </div>
-      </form>
-    </div>
+      </div>
+    </main>
   );
 };
 
