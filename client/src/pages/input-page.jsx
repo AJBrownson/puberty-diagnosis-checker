@@ -1,10 +1,19 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import axios from "axios";
-// import Med from '../assets/med-bg.jpg'
+import Med from '../assets/med-bg.jpg'
 
 
 const Input = () => {
+
+  // styles
+  const styles = {
+  backgroundImage: `url(${Med})`,
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'center'
+  };
+
   const [name, setName] = useState('')
   const [bmi, setBmi] = useState('')
   const [obesity, setObesity] = useState('')
@@ -36,9 +45,9 @@ const Input = () => {
   };
 
   return (
-    <main className="bg-blue-300">
-      <h1 className="text-3xl font-bold text-center pt-10 text-slate-900">
-        PUBERTY ONSET DIAGNOSTIC SYSTEM
+    <main className="bg-blue-300" style={styles}>
+      <h1 className="text-4xl font-bold text-center pt-10 text-white">
+        PUBERTY ONSET PREDICTION SYSTEM
       </h1>
       <div className="flex justify-center items-center h-screen">
         <form className="bg-white p-8 rounded shadow-md" onSubmit={handleSubmit}>
@@ -66,16 +75,22 @@ const Input = () => {
             >
               Body Mass Index
             </label>
-            <input
+            <select
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="bmi"
               name="bmi"
               type="text"
-              placeholder="BMI"
+              placeholder="bmi"
               value={bmi}
               onChange={(e) => setBmi(e.target.value)}
-            />
+            >
+              <option value=""></option>
+              <option value="Option 1">Underweight (0kg-30kg)</option>
+              <option value="Option 2">Normal (30kg - 85kg)</option>
+              <option value="Option 3">Overweight (85kg-100kg)</option>
+            </select>
           </div>
+
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
@@ -83,36 +98,23 @@ const Input = () => {
             >
               Childhood Obesity
             </label>
-            <input
+            <select
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="obesity"
               name="obesity"
               type="text"
-              placeholder="Obesity"
+              placeholder="obesity"
               value={obesity}
               onChange={(e) => setObesity(e.target.value)}
-            />
+            >
+              <option value=""></option>
+              <option value="Option 1">Not Obese (0-40)</option>
+              <option value="Option 2">Slightly Obese (28 - 80)</option>
+              <option value="Option 3">Very Obese ()</option>
+            </select>
           </div>
 
           <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="genetics"
-            >
-              Maternal Genetics
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="genetics"
-              name="genetics"
-              type="text"
-              placeholder="genetics"
-              value={genetics}
-              onChange={(e) => setGenetics(e.target.value)}
-            />
-          </div>
-
-          {/* <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="genetics"
@@ -123,15 +125,18 @@ const Input = () => {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="genetics"
               name="genetics"
-              value={formData.genetics}
-              onChange={handleInputChange}
+              type="text"
+              placeholder="genetics"
+              value={genetics}
+              onChange={(e) => setGenetics(e.target.value)}
             >
-              <option value="">Select Genetics</option>
-              <option value="Option 1">Option 1</option>
-              <option value="Option 2">Option 2</option>
-              <option value="Option 3">Option 3</option>
+              <option value=""></option>
+              <option value="Option 1">Late</option>
+              <option value="Option 2">Average</option>
+              <option value="Option 3">Early</option>
             </select>
-          </div> */}
+          </div>
+
           <div className="flex items-center justify-center">
             <input
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
@@ -139,8 +144,8 @@ const Input = () => {
             />
           </div>
         </form>
-        <div>
-          <p>RESULTS SHOWN HERE:</p>
+        <div className='text-gray-300'>
+          <p className='font-bold text-xl'>RESULTS SHOWN HERE:</p>
           {result && <p>Result: {result}</p>}
         </div>
       </div>

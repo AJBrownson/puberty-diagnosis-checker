@@ -22,8 +22,8 @@ app.post("/api/pubertyOnset", (req, res) => {
   // rule 1
   if ( 
     (bmi >= 0 && bmi <= 30) &&
-    (obesity >= 0 && obesity <= 40) &&
-    (genetics >= 0 && genetics <= 30)
+    (obesity === 'Not Obese') &&
+    (genetics === 'Late')
   ) {
     result = "Delayed";
 
@@ -67,7 +67,7 @@ app.post("/api/pubertyOnset", (req, res) => {
   ) {
     result = "Normal";
 
-    // rule 7
+        // rule 7
   } else if (
     (bmi >= 83 && bmi <= 100) &&
     (obesity >= 0 && obesity <= 40) &&
@@ -91,133 +91,133 @@ app.post("/api/pubertyOnset", (req, res) => {
   ) {
     result = "Normal";
 
-      // rule 10
-  if ( 
+    // rule 10
+  } else if ( 
     (bmi >= 0 && bmi <= 30) &&
     (obesity >= 0 && obesity <= 40) &&
     (genetics >= 0 && genetics <= 30)
   ) {
     result = "Delayed";
 
-    // rule 11
-  } else if (
-    (bmi >= 0 && bmi <= 30) &&
-    (obesity >= 0 && obesity <= 40) &&
-    (genetics >= 29 && genetics <= 80)
-  ) {
-    result = "Delayed";
+   // rule 11
+ } else if (
+   (bmi >= 0 && bmi <= 30) &&
+   (obesity >= 0 && obesity <= 40) &&
+   (genetics >= 29 && genetics <= 80)
+ ) {
+   result = "Delayed";
 
-    // rule 12
-  } else if (
-    (bmi >= 0 && bmi <= 30) &&
-    (obesity >= 0 && obesity <= 40) &&
-    (genetics >= 78 && genetics <= 100)
-  ) {
-    result = "Normal";
+   // rule 12
+ } else if (
+   (bmi >= 0 && bmi <= 30) &&
+   (obesity >= 0 && obesity <= 40) &&
+   (genetics >= 78 && genetics <= 100)
+ ) {
+   result = "Normal";
 
-    // rule 13
-  } else if (
-    (bmi >= 28 && bmi <= 85) &&
-    (obesity >= 0 && obesity <= 40) &&
-    (genetics >= 0 && genetics <= 30)
-  ) {
-    result = "Delayed";
+   // rule 13
+ } else if (
+   (bmi >= 28 && bmi <= 85) &&
+   (obesity >= 0 && obesity <= 40) &&
+   (genetics >= 0 && genetics <= 30)
+ ) {
+   result = "Delayed";
 
-    // rule 14
-  } else if (
-    (bmi >= 28 && bmi <= 85) &&
-    (obesity >= 0 && obesity <= 40) &&
-    (genetics >= 29 && genetics <= 80)
-  ) {
-    result = "Normal";
+   // rule 14
+ } else if (
+   (bmi >= 28 && bmi <= 85) &&
+   (obesity >= 0 && obesity <= 40) &&
+   (genetics >= 29 && genetics <= 80)
+ ) {
+   result = "Normal";
 
-    // rule 15
-  } else if (
-    (bmi >= 28 && bmi <= 85) &&
-    (obesity >= 0 && obesity <= 40) &&
-    (genetics >= 78 && genetics <= 100)
-  ) {
-    result = "Normal";
+   // rule 15
+ } else if (
+   (bmi >= 28 && bmi <= 85) &&
+   (obesity >= 0 && obesity <= 40) &&
+   (genetics >= 78 && genetics <= 100)
+ ) {
+   result = "Normal";
 
-    // rule 16
-  } else if (
-    (bmi >= 83 && bmi <= 100) &&
-    (obesity >= 0 && obesity <= 40) &&
-    (genetics >= 0 && genetics <= 30)
-  ) {
-    result = "Normal";
+   // rule 16
+ } else if (
+   (bmi >= 83 && bmi <= 100) &&
+   (obesity >= 0 && obesity <= 40) &&
+   (genetics >= 0 && genetics <= 30)
+ ) {
+   result = "Normal";
 
-    // rule 17
-  } else if (
-    (bmi >= 83 && bmi <= 100) &&
-    (obesity >= 0 && obesity <= 40) &&
-    (genetics >= 29 && genetics <= 80)
-  ) {
-    result = "Normal";
+   // rule 17
+ } else if (
+   (bmi >= 83 && bmi <= 100) &&
+   (obesity >= 0 && obesity <= 40) &&
+   (genetics >= 29 && genetics <= 80)
+ ) {
+   result = "Normal";
 
-    // rule 18
-  } else if (
-    (bmi >= 83 && bmi <= 30) &&
-    (obesity >= 0 && obesity <= 40) &&
-    (genetics >= 78 && genetics <= 100)
-  ) {
-    result = "Normal";
+   // rule 18
+ } else if (
+   (bmi >= 83 && bmi <= 30) &&
+   (obesity >= 0 && obesity <= 40) &&
+   (genetics >= 78 && genetics <= 100)
+ ) {
+   result = "Normal";
 
-    // rule 19
-  } else if (
-    (bmi >= 0 && bmi <= 30) &&
-    (obesity >= 0 && obesity <= 40) &&
-    (genetics >= 29 && genetics <= 80)
-  ) {
-    result = "Delayed";
+   // rule 19
+ } else if (
+   (bmi >= 0 && bmi <= 30) &&
+   (obesity >= 0 && obesity <= 40) &&
+   (genetics >= 29 && genetics <= 80)
+ ) {
+   result = "Delayed";
 
-    // rule 20
-  } else if (
-    (bmi >= 0 && bmi <= 30) &&
-    (obesity >= 0 && obesity <= 40) &&
-    (genetics >= 78 && genetics <= 100)
-  ) {
-    result = "Normal";
+   // rule 20
+ } else if (
+   (bmi >= 0 && bmi <= 30) &&
+   (obesity >= 0 && obesity <= 40) &&
+   (genetics >= 78 && genetics <= 100)
+ ) {
+   result = "Normal";
 
-    // rule 23
-  } else if (
-    (bmi >= 28 && bmi <= 85) &&
-    (obesity >= 0 && obesity <= 40) &&
-    (genetics >= 0 && genetics <= 30)
-  ) {
-    result = "Delayed";
+   // rule 23
+ } else if (
+   (bmi >= 28 && bmi <= 85) &&
+   (obesity >= 0 && obesity <= 40) &&
+   (genetics >= 0 && genetics <= 30)
+ ) {
+   result = "Delayed";
 
-    // rule 24
-  } else if (
-    (bmi >= 28 && bmi <= 85) &&
-    (obesity >= 0 && obesity <= 40) &&
-    (genetics >= 29 && genetics <= 80)
-  ) {
-    result = "Normal";
+   // rule 24
+ } else if (
+   (bmi >= 28 && bmi <= 85) &&
+   (obesity >= 0 && obesity <= 40) &&
+   (genetics >= 29 && genetics <= 80)
+ ) {
+   result = "Normal";
 
-    // rule 25
-  } else if (
-    (bmi >= 28 && bmi <= 85) &&
-    (obesity >= 0 && obesity <= 40) &&
-    (genetics >= 78 && genetics <= 100)
-  ) {
-    result = "Normal";
+   // rule 25
+ } else if (
+   (bmi >= 28 && bmi <= 85) &&
+   (obesity >= 0 && obesity <= 40) &&
+   (genetics >= 78 && genetics <= 100)
+ ) {
+   result = "Normal";
 
-    // rule 26
-  } else if (
-    (bmi >= 83 && bmi <= 100) &&
-    (obesity >= 0 && obesity <= 40) &&
-    (genetics >= 0 && genetics <= 30)
-  ) {
-    result = "Normal";
+   // rule 26
+ } else if (
+   (bmi >= 83 && bmi <= 100) &&
+   (obesity >= 0 && obesity <= 40) &&
+   (genetics >= 0 && genetics <= 30)
+ ) {
+   result = "Normal";
 
-    // rule 27
-  } else if (
-    (bmi >= 83 && bmi <= 100) &&
-    (obesity >= 0 && obesity <= 40) &&
-    (genetics >= 29 && genetics <= 80)
-  ) {
-    result = "Normal";
+   // rule 27
+ } else if (
+   (bmi >= 83 && bmi <= 100) &&
+   (obesity >= 0 && obesity <= 40) &&
+   (genetics >= 29 && genetics <= 80)
+ ) {
+   result = "Normal";
 
   } else {
     result = "Invalid ";
