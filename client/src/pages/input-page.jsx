@@ -1,48 +1,48 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import axios from "axios";
-import Med from '../assets/med.avif'
-
+import Med from '../assets/med.avif';
 
 const Input = () => {
-
   // styles
   const styles = {
-  backgroundImage: `url(${Med})`,
-  backgroundSize: 'cover',
-  backgroundRepeat: 'no-repeat',
-  backgroundPosition: 'center'
+    backgroundImage: `url(${Med})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center'
   };
 
-  
-  const [name, setName] = useState('')
-  const [bmi, setBmi] = useState('')
-  const [obesity, setObesity] = useState('')
-  const [genetics, setGenetics] = useState('')
-
+  const [name, setName] = useState('');
+  const [bmi, setBmi] = useState('');
+  const [obesity, setObesity] = useState('');
+  const [genetics, setGenetics] = useState('');
   const [result, setResult] = useState('');
+  const [recommendation, setRecommendation] = useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const response = await axios.post(
         "http://localhost:5000/api/pubertyOnset", {
           name,
           bmi,
           obesity,
-          genetics,
+          genetics
         }
       );
+      console.log('Response from server:', response.data);
       setResult(response.data.result);
+      setRecommendation(response.data.recommendation);
     } catch (error) {
       console.error("Error:", error);
     }
 
     // this clears form input values after submission
-    setName('')
-    setBmi('')
-    setObesity('')
-    setGenetics('')
+    setName('');
+    setBmi('');
+    setObesity('');
+    setGenetics('');
   };
 
   return (
@@ -50,7 +50,7 @@ const Input = () => {
       <h1 className="text-4xl font-bold text-center pt-10 text-white">
         PUBERTY ONSET PREDICTION SYSTEM
       </h1>
-      <div className="flex justify-center items-center h-screen">
+      <div className="px-80 grid grid-cols-2 gap-10 items-center h-screen">
         <form className="bg-white p-8 rounded shadow-md" onSubmit={handleSubmit}>
           <div className="mb-4">
             <label
@@ -74,22 +74,17 @@ const Input = () => {
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="bmi"
             >
-              Body Mass Index
+              Body Mass Index (In kg)
             </label>
-            <select
+            <input
               className="shadow appearance-none border border-slate-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="bmi"
               name="bmi"
               type="text"
-              placeholder="bmi"
+              placeholder="BMI"
               value={bmi}
               onChange={(e) => setBmi(e.target.value)}
-            >
-              <option value=""></option>
-              <option value="Option 1">Underweight (0kg-30kg)</option>
-              <option value="Option 2">Normal (30kg - 85kg)</option>
-              <option value="Option 3">Overweight (85kg-100kg)</option>
-            </select>
+            />
           </div>
 
           <div className="mb-4">
@@ -97,22 +92,17 @@ const Input = () => {
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="obesity"
             >
-              Childhood Obesity
+              Childhood Obesity (In %)
             </label>
-            <select
+            <input
               className="shadow appearance-none border border-slate-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="obesity"
               name="obesity"
               type="text"
-              placeholder="obesity"
+              placeholder="Obesity"
               value={obesity}
               onChange={(e) => setObesity(e.target.value)}
-            >
-              <option value=""></option>
-              <option value="Option 1">Not Obese</option>
-              <option value="Option 2">Slightly Obese</option>
-              <option value="Option 3">Very Obese</option>
-            </select>
+            />
           </div>
 
           <div className="mb-4">
@@ -122,32 +112,28 @@ const Input = () => {
             >
               Maternal Genetics
             </label>
-            <select
+            <input
               className="shadow appearance-none border border-slate-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="genetics"
               name="genetics"
               type="text"
-              placeholder="genetics"
+              placeholder="Genetics"
               value={genetics}
               onChange={(e) => setGenetics(e.target.value)}
-            >
-              <option value=""></option>
-              <option value="Option 1">Late</option>
-              <option value="Option 2">Average</option>
-              <option value="Option 3">Early</option>
-            </select>
+            />
           </div>
 
           <div className="flex items-center justify-center">
             <input
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer"
               type="submit"
             />
           </div>
         </form>
         <div className='text-gray-300'>
-          <p className='font-bold text-xl'>RESULTS SHOWN HERE:</p>
-          {result && <p>Result: {result}</p>}
+          <p className='font-bold text-xl'>PUBERTY ONSET</p>
+          {result && <p className='pb-6'><span className="font-bold">Prediction:</span> {result}</p>}
+          {recommendation && <p><span className="font-bold">Recommendation:</span> {recommendation}</p>}
         </div>
       </div>
     </main>

@@ -16,102 +16,104 @@ app.use(
 app.post("/api/pubertyOnset", (req, res) => {
   const { bmi, obesity, genetics } = req.body;
 
-  // If...else rules for computing the 
+  // If...else fuzzy rules for computing the results
   let result;
 
   // rule 1
   if ( 
-    (bmi >= 0 && bmi <= 30) &&
-    (obesity === 'Not Obese') &&
-    (genetics === 'Late')
+    (bmi >= 0 && bmi <= 28) &&
+    (obesity >= 0 && obesity <= 40) &&
+    (genetics >= 0 && genetics <= 30)
   ) {
-    result = "Delayed";
+    result = "Puberty is likely to be delayed";
+    recommendation = "Regularly monitor the patient's growth and development, and consider additional hormonal evaluations if necessary. Collaboration with the endocrinologist for specialized care is very important.";
 
     // rule 2
   } else if (
-    (bmi >= 0 && bmi <= 30) &&
+    (bmi >= 0 && bmi <= 28) &&
     (obesity >= 0 && obesity <= 40) &&
-    (genetics >= 29 && genetics <= 80)
+    (genetics === 'Average')
   ) {
-    result = "Delayed";
+    result = "Puberty is likely to be delayed";
+    recommendation = "Regularly monitor the patient's growth and development, and consider additional hormonal evaluations if necessary. Collaboration with the endocrinologist for specialized care is very important.";
 
     // rule 3
   } else if (
-    (bmi >= 0 && bmi <= 30) &&
+    (bmi >= 0 && bmi <= 28) &&
     (obesity >= 0 && obesity <= 40) &&
-    (genetics >= 78 && genetics <= 100)
+    (genetics === 'Early')
   ) {
     result = "Normal";
 
     // rule 4
   } else if (
-    (bmi >= 28 && bmi <= 85) &&
-    (obesity >= 0 && obesity <= 40) &&
-    (genetics >= 0 && genetics <= 30)
+    (bmi === 'Normal (30 - 85)') &&
+    (obesity === 'Not Obese (0 - 30)') &&
+    (genetics === 'Early')
   ) {
     result = "Delayed";
 
     // rule 5
   } else if (
-    (bmi >= 28 && bmi <= 85) &&
-    (obesity >= 0 && obesity <= 40) &&
-    (genetics >= 29 && genetics <= 80)
+    (bmi === 'Normal (30 - 85)') &&
+    (obesity === 'Not Obese (0 - 30)') &&
+    (genetics === 'Average')
   ) {
     result = "Normal";
 
     // rule 6
   } else if (
-    (bmi >= 28 && bmi <= 85) &&
-    (obesity >= 0 && obesity <= 40) &&
-    (genetics >= 78 && genetics <= 100)
+    (bmi === 'Normal (30 - 85)') &&
+    (obesity === 'Not Obese (0 - 30)') &&
+    (genetics === 'Late')
   ) {
     result = "Normal";
 
-        // rule 7
+    // rule 7
   } else if (
-    (bmi >= 83 && bmi <= 100) &&
-    (obesity >= 0 && obesity <= 40) &&
-    (genetics >= 0 && genetics <= 30)
+    (bmi === 'Overweight (85-100)') &&
+    (obesity === 'Not Obese (0 - 30)') &&
+    (genetics === 'Late')
   ) {
     result = "Normal";
 
     // rule 8
   } else if (
-    (bmi >= 83 && bmi <= 100) &&
-    (obesity >= 0 && obesity <= 40) &&
-    (genetics >= 29 && genetics <= 80)
+    (bmi === 'Overweight (85-100)') &&
+    (obesity === 'Not Obese (0 - 30)') &&
+    (genetics === 'Average')
   ) {
     result = "Normal";
 
     // rule 9
   } else if (
-    (bmi >= 83 && bmi <= 30) &&
-    (obesity >= 0 && obesity <= 40) &&
-    (genetics >= 78 && genetics <= 100)
+    (bmi === 'Overweight (85-100)') &&
+    (obesity === 'Not Obese (0 - 30)') &&
+    (genetics === 'Early')
   ) {
     result = "Normal";
 
     // rule 10
   } else if ( 
-    (bmi >= 0 && bmi <= 30) &&
-    (obesity >= 0 && obesity <= 40) &&
-    (genetics >= 0 && genetics <= 30)
+    (bmi === 'Underweight (0 - 18.5)') &&
+    (obesity === 'Slightly Obese (30-80)') &&
+    (genetics === 'Late')
   ) {
     result = "Delayed";
 
    // rule 11
  } else if (
-   (bmi >= 0 && bmi <= 30) &&
-   (obesity >= 0 && obesity <= 40) &&
-   (genetics >= 29 && genetics <= 80)
+  (bmi === 'Underweight (0 - 18.5)') &&
+  (obesity === 'Slightly Obese (30-80)') &&
+   (genetics === 'Average')
  ) {
-   result = "Delayed";
+   result = "Normal";
 
    // rule 12
  } else if (
-   (bmi >= 0 && bmi <= 30) &&
-   (obesity >= 0 && obesity <= 40) &&
-   (genetics >= 78 && genetics <= 100)
+  (bmi === 'Underweight (0 - 18.5)') &&
+  (obesity === 'Slightly Obese (30-80)') &&
+   (genetics === 'Early')
  ) {
    result = "Normal";
 
@@ -222,8 +224,8 @@ app.post("/api/pubertyOnset", (req, res) => {
   } else {
     result = "Invalid ";
   }
-
-  res.json({ result });
+  console.log('Sending result:', result);
+  res.json({ result, recommendation });
 });
 
 app.listen(PORT, () => {
