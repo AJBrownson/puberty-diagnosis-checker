@@ -21,208 +21,249 @@ app.post("/api/pubertyOnset", (req, res) => {
 
   // rule 1
   if ( 
-    (bmi >= 0 && bmi <= 28) &&
-    (obesity >= 0 && obesity <= 40) &&
-    (genetics >= 0 && genetics <= 30)
+    (bmi === 'underweight') &&
+    (obesity === 'not') &&
+    (genetics === 'late')
   ) {
     result = "Puberty is likely to be delayed";
     recommendation = "Regularly monitor the patient's growth and development, and consider additional hormonal evaluations if necessary. Collaboration with the endocrinologist for specialized care is very important.";
 
     // rule 2
   } else if (
-    (bmi >= 0 && bmi <= 28) &&
-    (obesity >= 0 && obesity <= 40) &&
-    (genetics === 'Average')
+    (bmi === 'underweight') &&
+    (obesity === 'not') &&
+    (genetics === 'average')
   ) {
     result = "Puberty is likely to be delayed";
     recommendation = "Regularly monitor the patient's growth and development, and consider additional hormonal evaluations if necessary. Collaboration with the endocrinologist for specialized care is very important.";
 
     // rule 3
   } else if (
-    (bmi >= 0 && bmi <= 28) &&
-    (obesity >= 0 && obesity <= 40) &&
-    (genetics === 'Early')
+    (bmi === 'underweight') &&
+    (obesity === 'not') &&
+    (genetics === 'early')
   ) {
-    result = "Normal";
+    result = "Puberty is likely to be normal";
+    recommendation = "Continue regular check-ups to monitor normal development. Provide education on physical and emotional changes during puberty and address any concerns or questions from the patient.";
 
     // rule 4
   } else if (
-    (bmi === 'Normal (30 - 85)') &&
-    (obesity === 'Not Obese (0 - 30)') &&
-    (genetics === 'Early')
+    (bmi === 'normal') &&
+    (obesity === 'not') &&
+    (genetics === 'early')
   ) {
-    result = "Delayed";
+    result = "Puberty is likely to be normal";
+    recommendation = "Continue regular check-ups to monitor normal development. Provide education on physical and emotional changes during puberty and address any concerns or questions from the patient.";
 
     // rule 5
   } else if (
-    (bmi === 'Normal (30 - 85)') &&
-    (obesity === 'Not Obese (0 - 30)') &&
-    (genetics === 'Average')
+    (bmi === 'normal') &&
+    (obesity === 'not') &&
+    (genetics === 'average')
   ) {
-    result = "Normal";
+    result = "Puberty is likely to be normal";
+    recommendation = "Continue regular check-ups to monitor normal development. Provide education on physical and emotional changes during puberty and address any concerns or questions from the patient.";
 
     // rule 6
   } else if (
-    (bmi === 'Normal (30 - 85)') &&
-    (obesity === 'Not Obese (0 - 30)') &&
-    (genetics === 'Late')
+    (bmi === 'normal') &&
+    (obesity === 'not') &&
+    (genetics === 'late')
   ) {
-    result = "Normal";
+    result = "Puberty is likely to be normal";
+    recommendation = "Continue regular check-ups to monitor normal development. Provide education on physical and emotional changes during puberty and address any concerns or questions from the patient.";
 
     // rule 7
   } else if (
-    (bmi === 'Overweight (85-100)') &&
-    (obesity === 'Not Obese (0 - 30)') &&
-    (genetics === 'Late')
+    (bmi === 'overweight') &&
+    (obesity === 'not') &&
+    (genetics === 'late')
   ) {
-    result = "Normal";
+    result = "Puberty is likely to be normal";
+    recommendation = "Continue regular check-ups to monitor normal development. Provide education on physical and emotional changes during puberty and address any concerns or questions from the patient.";
 
     // rule 8
   } else if (
-    (bmi === 'Overweight (85-100)') &&
-    (obesity === 'Not Obese (0 - 30)') &&
-    (genetics === 'Average')
+    (bmi === 'overweight') &&
+    (obesity === 'not') &&
+    (genetics === 'average')
   ) {
-    result = "Normal";
+    result = "Puberty is likely to be normal";
+    recommendation = "Continue regular check-ups to monitor normal development. Provide education on physical and emotional changes during puberty and address any concerns or questions from the patient.";
 
     // rule 9
   } else if (
-    (bmi === 'Overweight (85-100)') &&
-    (obesity === 'Not Obese (0 - 30)') &&
-    (genetics === 'Early')
+    (bmi === 'overweight') &&
+    (obesity === 'not') &&
+    (genetics === 'early')
   ) {
-    result = "Normal";
+    result = "Puberty is likely to be normal";
+    recommendation = "Continue regular check-ups to monitor normal development. Provide education on physical and emotional changes during puberty and address any concerns or questions from the patient.";
 
     // rule 10
   } else if ( 
-    (bmi === 'Underweight (0 - 18.5)') &&
-    (obesity === 'Slightly Obese (30-80)') &&
-    (genetics === 'Late')
+    (bmi === 'underweight') &&
+    (obesity === 'slightly') &&
+    (genetics === 'late')
   ) {
-    result = "Delayed";
+    result = "Puberty is likely to be delayed";
+    recommendation = "Regularly monitor the patient's growth and development, and consider additional hormonal evaluations if necessary. Collaboration with the endocrinologist for specialized care is very important.";
 
    // rule 11
  } else if (
-  (bmi === 'Underweight (0 - 18.5)') &&
-  (obesity === 'Slightly Obese (30-80)') &&
-   (genetics === 'Average')
+  (bmi === 'underweight') &&
+  (obesity === 'slightly') &&
+   (genetics === 'average')
  ) {
-   result = "Normal";
+  result = "Puberty is likely to be normal";
+  recommendation = "Continue regular check-ups to monitor normal development. Provide education on physical and emotional changes during puberty and address any concerns or questions from the patient.";
 
    // rule 12
  } else if (
-  (bmi === 'Underweight (0 - 18.5)') &&
-  (obesity === 'Slightly Obese (30-80)') &&
-   (genetics === 'Early')
+  (bmi === 'underweight') &&
+  (obesity === 'slightly') &&
+   (genetics === 'early')
  ) {
-   result = "Normal";
+  result = "Puberty is likely to be normal";
+  recommendation = "Continue regular check-ups to monitor normal development. Provide education on physical and emotional changes during puberty and address any concerns or questions from the patient.";
 
    // rule 13
  } else if (
-   (bmi >= 28 && bmi <= 85) &&
-   (obesity >= 0 && obesity <= 40) &&
-   (genetics >= 0 && genetics <= 30)
+   (bmi === 'normal') &&
+   (obesity === 'slightly') &&
+   (genetics === 'late')
  ) {
-   result = "Delayed";
+  result = "Puberty is likely to be normal";
+  recommendation = "Continue regular check-ups to monitor normal development. Provide education on physical and emotional changes during puberty and address any concerns or questions from the patient.";
 
    // rule 14
  } else if (
-   (bmi >= 28 && bmi <= 85) &&
-   (obesity >= 0 && obesity <= 40) &&
-   (genetics >= 29 && genetics <= 80)
+   (bmi === 'normal') &&
+   (obesity === 'slightly') &&
+   (genetics === 'average')
  ) {
-   result = "Normal";
+  result = "Puberty is likely to be normal";
+  recommendation = "Continue regular check-ups to monitor normal development. Provide education on physical and emotional changes during puberty and address any concerns or questions from the patient.";
 
    // rule 15
  } else if (
-   (bmi >= 28 && bmi <= 85) &&
-   (obesity >= 0 && obesity <= 40) &&
-   (genetics >= 78 && genetics <= 100)
+   (bmi === 'normal') &&
+   (obesity === 'slightly') &&
+   (genetics === 'early')
  ) {
-   result = "Normal";
+  result = "Puberty is likely to be normal";
+  recommendation = "Continue regular check-ups to monitor normal development. Provide education on physical and emotional changes during puberty and address any concerns or questions from the patient.";
 
    // rule 16
  } else if (
-   (bmi >= 83 && bmi <= 100) &&
-   (obesity >= 0 && obesity <= 40) &&
-   (genetics >= 0 && genetics <= 30)
+   (bmi === 'overweight') &&
+   (obesity === 'slightly') &&
+   (genetics === 'late')
  ) {
-   result = "Normal";
+  result = "Puberty is likely to be normal";
+  recommendation = "Continue regular check-ups to monitor normal development. Provide education on physical and emotional changes during puberty and address any concerns or questions from the patient.";
 
    // rule 17
  } else if (
-   (bmi >= 83 && bmi <= 100) &&
-   (obesity >= 0 && obesity <= 40) &&
-   (genetics >= 29 && genetics <= 80)
+   (bmi === 'overweight') &&
+   (obesity === 'slightly') &&
+   (genetics === 'average')
  ) {
-   result = "Normal";
+  result = "Puberty is likely to be normal";
+  recommendation = "Continue regular check-ups to monitor normal development. Provide education on physical and emotional changes during puberty and address any concerns or questions from the patient.";
 
    // rule 18
  } else if (
-   (bmi >= 83 && bmi <= 30) &&
-   (obesity >= 0 && obesity <= 40) &&
-   (genetics >= 78 && genetics <= 100)
+   (bmi === 'overweight') &&
+   (obesity === 'slightly') &&
+   (genetics === 'early')
  ) {
-   result = "Normal";
+   result = "Puberty is likely to be precocious";
+   recommendation = "Perform additional evaluations to identify the underlying cause, collaborate with an endocrinologist for specialized care, and closely monitor the patient's developmental progress.";
 
    // rule 19
  } else if (
-   (bmi >= 0 && bmi <= 30) &&
-   (obesity >= 0 && obesity <= 40) &&
-   (genetics >= 29 && genetics <= 80)
+   (bmi === 'underweight') &&
+   (obesity === 'very') &&
+   (genetics === 'late')
  ) {
-   result = "Delayed";
+  result = "Puberty is likely to be normal";
+  recommendation = "Continue regular check-ups to monitor normal development. Provide education on physical and emotional changes during puberty and address any concerns or questions from the patient.";
 
    // rule 20
  } else if (
-   (bmi >= 0 && bmi <= 30) &&
-   (obesity >= 0 && obesity <= 40) &&
-   (genetics >= 78 && genetics <= 100)
+   (bmi === 'underweight') &&
+   (obesity === 'very') &&
+   (genetics === 'average')
  ) {
-   result = "Normal";
+  result = "Puberty is likely to be normal";
+  recommendation = "Continue regular check-ups to monitor normal development. Provide education on physical and emotional changes during puberty and address any concerns or questions from the patient.";
+
+   // rule 21
+ } else if (
+   (bmi === 'underweight') &&
+   (obesity === 'very') &&
+   (genetics === 'early')
+ ) {
+  result = "Puberty is likely to be normal";
+  recommendation = "Continue regular check-ups to monitor normal development. Provide education on physical and emotional changes during puberty and address any concerns or questions from the patient.";
+
+   // rule 22
+ } else if (
+   (bmi === 'underweight') &&
+   (obesity === 'very') &&
+   (genetics === 'late')
+ ) {
+  result = "Puberty is likely to be normal";
+  recommendation = "Continue regular check-ups to monitor normal development. Provide education on physical and emotional changes during puberty and address any concerns or questions from the patient.";
 
    // rule 23
  } else if (
-   (bmi >= 28 && bmi <= 85) &&
-   (obesity >= 0 && obesity <= 40) &&
-   (genetics >= 0 && genetics <= 30)
+   (bmi === 'underweight') &&
+   (obesity === 'very') &&
+   (genetics === 'average')
  ) {
-   result = "Delayed";
+  result = "Puberty is likely to be normal";
+  recommendation = "Continue regular check-ups to monitor normal development. Provide education on physical and emotional changes during puberty and address any concerns or questions from the patient.";
 
    // rule 24
  } else if (
-   (bmi >= 28 && bmi <= 85) &&
-   (obesity >= 0 && obesity <= 40) &&
-   (genetics >= 29 && genetics <= 80)
+   (bmi === 'underweight') &&
+   (obesity === 'very') &&
+   (genetics === 'early')
  ) {
-   result = "Normal";
+  result = "Puberty is likely to be precocious";
+  recommendation = "Perform additional evaluations to identify the underlying cause, collaborate with an endocrinologist for specialized care, and closely monitor the patient's developmental progress.";
 
-   // rule 25
+    // rule 25
  } else if (
-   (bmi >= 28 && bmi <= 85) &&
-   (obesity >= 0 && obesity <= 40) &&
-   (genetics >= 78 && genetics <= 100)
- ) {
-   result = "Normal";
+  (bmi === 'overweight') &&
+  (obesity === 'very') &&
+  (genetics === 'late')
+) {
+  result = "Puberty is likely to be normal";
+  recommendation = "Continue regular check-ups to monitor normal development. Provide education on physical and emotional changes during puberty and address any concerns or questions from the patient.";
 
-   // rule 26
+    // rule 26
  } else if (
-   (bmi >= 83 && bmi <= 100) &&
-   (obesity >= 0 && obesity <= 40) &&
-   (genetics >= 0 && genetics <= 30)
- ) {
-   result = "Normal";
+  (bmi === 'overweight') &&
+  (obesity === 'very') &&
+  (genetics === 'average')
+) {
+  result = "Puberty is likely to be precocious";
+   recommendation = "Perform additional evaluations to identify the underlying cause, collaborate with an endocrinologist for specialized care, and closely monitor the patient's developmental progress.";
 
    // rule 27
  } else if (
-   (bmi >= 83 && bmi <= 100) &&
-   (obesity >= 0 && obesity <= 40) &&
-   (genetics >= 29 && genetics <= 80)
+   (bmi === 'overweight') &&
+   (obesity === 'very') &&
+   (genetics === 'early')
  ) {
-   result = "Normal";
+   result = "Puberty is likely to be precocious (early)";
+   recommendation = "Conduct further evaluations to identify the cause and collaborate with an endocrinologist for specialized care. Make sure the patient's development is being monitored closely.";
 
   } else {
-    result = "Invalid ";
+    result = "Invalid input";
   }
   console.log('Sending result:', result);
   res.json({ result, recommendation });

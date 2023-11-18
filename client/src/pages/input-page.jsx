@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Med from '../assets/med.avif';
 
+
 const Input = () => {
   // styles
   const styles = {
@@ -31,7 +32,6 @@ const Input = () => {
           genetics
         }
       );
-      console.log('Response from server:', response.data);
       setResult(response.data.result);
       setRecommendation(response.data.recommendation);
     } catch (error) {
@@ -47,9 +47,7 @@ const Input = () => {
 
   return (
     <main className="bg-blue-300" style={styles}>
-      <h1 className="text-4xl font-bold text-center pt-10 text-white">
-        PUBERTY ONSET PREDICTION SYSTEM
-      </h1>
+
       <div className="px-80 grid grid-cols-2 gap-10 items-center h-screen">
         <form className="bg-white p-8 rounded shadow-md" onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -74,17 +72,22 @@ const Input = () => {
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="bmi"
             >
-              Body Mass Index (In kg)
+              Body Mass Index (In %)
             </label>
-            <input
+             <select
               className="shadow appearance-none border border-slate-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="bmi"
               name="bmi"
               type="text"
-              placeholder="BMI"
+              placeholder="bmi"
               value={bmi}
               onChange={(e) => setBmi(e.target.value)}
-            />
+            >
+              <option value=""></option>
+              <option value="underweight">Underweight (0 - 18.5)</option>
+              <option value="normal">Normal (18.5 - 24.9)</option>
+              <option value="overweight">Overweight (24.9 - 29.9)</option>
+            </select>
           </div>
 
           <div className="mb-4">
@@ -94,15 +97,20 @@ const Input = () => {
             >
               Childhood Obesity (In %)
             </label>
-            <input
+            <select
               className="shadow appearance-none border border-slate-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="obesity"
               name="obesity"
               type="text"
-              placeholder="Obesity"
+              placeholder="obesity"
               value={obesity}
               onChange={(e) => setObesity(e.target.value)}
-            />
+            >
+              <option value=""></option>
+              <option value="not">Not Obese (0 - 30)</option>
+              <option value="slightly">Slightly Obese (30 - 80)</option>
+              <option value="very">Very Obese (80 - 100)</option>
+            </select>
           </div>
 
           <div className="mb-4">
@@ -110,17 +118,22 @@ const Input = () => {
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="genetics"
             >
-              Maternal Genetics
+              Maternal Genetics (In %)
             </label>
-            <input
+             <select
               className="shadow appearance-none border border-slate-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="genetics"
               name="genetics"
               type="text"
-              placeholder="Genetics"
+              placeholder="genetics"
               value={genetics}
               onChange={(e) => setGenetics(e.target.value)}
-            />
+            >
+              <option value=""></option>
+              <option value="late">Late</option>
+              <option value="average">Average</option>
+              <option value="early">Early</option>
+            </select>
           </div>
 
           <div className="flex items-center justify-center">
