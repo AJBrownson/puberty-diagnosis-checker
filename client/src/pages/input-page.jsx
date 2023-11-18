@@ -46,7 +46,7 @@ const Input = () => {
   return (
     <main className="bg-blue-300" style={styles}>
 
-      <div className="px-80 grid grid-cols-2 gap-10 items-center h-screen">
+      <div className="px-80 grid grid-col items-center h-screen">
         <form className="bg-white p-8 rounded shadow-md" onSubmit={handleSubmit}>
 
           <div className="mb-4">
@@ -54,7 +54,7 @@ const Input = () => {
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="bmi"
             >
-              Body Mass Index (In %)
+              Body Mass Index
             </label>
              <select
               className="shadow appearance-none border border-slate-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -66,9 +66,9 @@ const Input = () => {
               onChange={(e) => setBmi(e.target.value)}
             >
               <option value=""></option>
-              <option value="underweight">Underweight (0 - 18.5)</option>
-              <option value="normal">Normal (18.5 - 24.9)</option>
-              <option value="overweight">Overweight (24.9 - 29.9)</option>
+              <option value="underweight">Underweight (0 - 30)</option>
+              <option value="normal">Normal (30 - 80)</option>
+              <option value="overweight">Overweight (80 - 100)</option>
             </select>
           </div>
 
@@ -77,7 +77,7 @@ const Input = () => {
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="obesity"
             >
-              Childhood Obesity (In %)
+              Childhood Obesity
             </label>
             <select
               className="shadow appearance-none border border-slate-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -100,7 +100,7 @@ const Input = () => {
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="genetics"
             >
-              Maternal Genetics (In %)
+              Maternal Genetics
             </label>
              <select
               className="shadow appearance-none border border-slate-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -125,8 +125,10 @@ const Input = () => {
             />
           </div>
         </form>
+
+        {/* results div */}
         <div className='text-gray-300'>
-          <p className='font-bold text-xl'>PUBERTY ONSET</p>
+          {result &&<p className='font-bold text-center text-xl'>PUBERTY ONSET</p>}
           {result && <p className='pb-6'><span className="font-bold">Prediction:</span> {result}</p>}
           {recommendation && <p><span className="font-bold">Recommendation:</span> {recommendation}</p>}
         </div>
