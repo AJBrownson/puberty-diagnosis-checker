@@ -1,9 +1,18 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Med from "../assets/med-bg.jpg";
 
 const Login = () => {
+  const navigate = useNavigate();
+  
+  const onButtonClick = () => {
+    // Navigate to a specific route
+    navigate("/input");
+  };
+
+
   // styles
   const styles = {
     backgroundImage: `url(${Med})`,
@@ -81,6 +90,7 @@ const Login = () => {
 
           <div className="flex items-center justify-center">
             <button
+              onClick={onButtonClick}
               className="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer"
               // type="submit"
             >Login</button>

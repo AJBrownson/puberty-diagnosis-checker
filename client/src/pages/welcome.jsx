@@ -4,6 +4,14 @@ import { useNavigate } from "react-router-dom";
 import Med from "../assets/med-bg.jpg";
 
 const Home = (props) => {
+  const navigate = useNavigate();
+
+  const onButtonClick = () => {
+    // Navigate to a specific route
+    navigate("/login");
+  };
+
+  
   const mainContainerStyle = {
     display: "flex",
     flexDirection: "column",
@@ -43,7 +51,7 @@ const Home = (props) => {
       <div style={titleContainerStyle}>PUBERTY ONSET PREDICTION SYSTEM</div>
       {/* <div>predicting puberty onset...</div> */}
       <div style={buttonContainerStyle}>
-        <button className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer">
+        <button onClick={onButtonClick} className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer">
           Enter
         </button>
       </div>
